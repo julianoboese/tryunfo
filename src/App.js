@@ -16,6 +16,7 @@ class App extends React.Component {
       trunfo: false,
       buttonDisabled: true,
       deck: [],
+      hasTrunfo: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,7 +45,7 @@ class App extends React.Component {
 
   handleSubmit() {
     const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, deck } = this.state;
+      image, rare, trunfo, deck, hasTrunfo } = this.state;
     this.setState({
       deck: [...deck, {
         name,
@@ -65,6 +66,7 @@ class App extends React.Component {
         attr3: 0,
         image: '',
         rare: 'normal',
+        hasTrunfo: trunfo || hasTrunfo,
         trunfo: false,
       });
     });
@@ -72,7 +74,7 @@ class App extends React.Component {
 
   render() {
     const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, buttonDisabled } = this.state;
+      image, rare, trunfo, buttonDisabled, hasTrunfo } = this.state;
 
     return (
       <>
@@ -88,6 +90,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
+          hasTrunfo={ hasTrunfo }
           onInputChange={ this.handleChange }
           isSaveButtonDisabled={ buttonDisabled }
           onSaveButtonClick={ this.handleSubmit }

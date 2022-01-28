@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
 import Select from './Select';
+import InputCheck from './InputCheck';
 
 function Form(props) {
   const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-    cardImage, cardRare, cardTrunfo, isSaveButtonDisabled,
+    cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
     onInputChange, onSaveButtonClick } = props;
 
   return (
@@ -56,11 +57,12 @@ function Form(props) {
         value={ cardRare }
         onInputChange={ onInputChange }
       />
-      <Input
+      <InputCheck
         labelText="Super Trybe Trunfo"
         type="checkbox"
         name="trunfo"
-        isChecked={ cardTrunfo }
+        value={ cardTrunfo }
+        hasTrunfo={ hasTrunfo }
         onInputChange={ onInputChange }
       />
       <button
@@ -84,7 +86,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

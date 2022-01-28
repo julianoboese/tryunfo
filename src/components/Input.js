@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Input(props) {
-  const { labelText, type, name, value, isChecked, onInputChange } = props;
+  const { labelText, type, name, value, onInputChange } = props;
   return (
     <div>
       <label htmlFor={ name }>
@@ -12,7 +12,6 @@ function Input(props) {
           id={ name }
           name={ name }
           value={ value }
-          checked={ isChecked }
           onChange={ onInputChange }
           data-testid={ `${name}-input` }
         />
@@ -21,17 +20,11 @@ function Input(props) {
   );
 }
 
-Input.defaultProps = {
-  value: '',
-  isChecked: false,
-};
-
 Input.propTypes = {
   labelText: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  isChecked: PropTypes.bool,
+  value: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };
 
