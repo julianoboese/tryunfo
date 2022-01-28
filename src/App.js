@@ -15,12 +15,14 @@ class App extends React.Component {
       rare: 'normal',
       trunfo: false,
       buttonDisabled: true,
+      deck: [],
     };
 
-    this.onInputChange = this.onInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onInputChange({ target }) {
+  handleChange({ target }) {
     this.setState(() => ({
       [target.name]: target.type === 'checkbox' ? target.checked : target.value,
     }), () => {
@@ -37,6 +39,34 @@ class App extends React.Component {
         buttonDisabled: !(firstCondition && secondCondition
       && thirdCondition && fourthCondition),
       }));
+    });
+  }
+
+  handleSubmit() {
+    const { name, description, attr1, attr2, attr3,
+      image, rare, trunfo, deck } = this.state;
+    this.setState({
+      deck: [...deck, {
+        name,
+        description,
+        attr1,
+        attr2,
+        attr3,
+        image,
+        rare,
+        trunfo,
+      }],
+    }, () => {
+      this.setState({
+        name: '',
+        description: '',
+        attr1: 0,
+        attr2: 0,
+        attr3: 0,
+        image: '',
+        rare: 'normal',
+        trunfo: false,
+      });
     });
   }
 
@@ -58,8 +88,9 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
-          onInputChange={ this.onInputChange }
+          onInputChange={ this.handleChange }
           isSaveButtonDisabled={ buttonDisabled }
+          onSaveButtonClick={ this.handleSubmit }
         />
         <Card
           cardName={ name }
