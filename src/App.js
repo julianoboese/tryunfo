@@ -14,19 +14,36 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       trunfo: false,
+      buttonDisabled: true,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
   }
 
   onInputChange({ target }) {
-    this.setState({
+    this.setState(() => ({
       [target.name]: target.type === 'checkbox' ? target.checked : target.value,
+    }), () => {
+      const { name, description, attr1, attr2, attr3, image, rare } = this.state;
+      const maxTotal = 210;
+      const maxEach = 90;
+      const firstCondition = name && description && image && rare;
+      const secondCondition = parseInt(attr1, 10) + parseInt(attr2, 10)
+        + parseInt(attr3, 10) <= maxTotal;
+      const thirdCondition = attr1 <= maxEach && attr2 <= maxEach && attr3 <= maxEach;
+      const fourthCondition = attr1 >= 0 && attr2 >= 0 && attr3 >= 0;
+
+      this.setState(() => ({
+        buttonDisabled: !(firstCondition && secondCondition
+      && thirdCondition && fourthCondition),
+      }));
     });
   }
 
   render() {
-    const { name, description, attr1, attr2, attr3, image, rare, trunfo } = this.state;
+    const { name, description, attr1, attr2, attr3,
+      image, rare, trunfo, buttonDisabled } = this.state;
+
     return (
       <>
         <div>
@@ -42,6 +59,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ buttonDisabled }
         />
         <Card
           cardName={ name }
