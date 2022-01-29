@@ -8,8 +8,8 @@ function CardList(props) {
   return (
     <div>
       {cardDeck.map((card) => (
-        <>
-          <div key={ card.name }>
+        <div key={ card.name }>
+          <div>
             <Card
               cardName={ card.name }
               cardDescription={ card.description }
@@ -29,7 +29,7 @@ function CardList(props) {
           >
             Excluir
           </button>
-        </>
+        </div>
       ))}
     </div>
   );

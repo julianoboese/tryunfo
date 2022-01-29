@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import CardList from './components/CardList';
+import Filter from './components/Filter';
 
 class App extends React.Component {
   constructor() {
@@ -18,11 +19,13 @@ class App extends React.Component {
       buttonDisabled: true,
       deck: [],
       hasTrunfo: false,
+      typedName: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
   handleChange({ target }) {
@@ -84,9 +87,18 @@ class App extends React.Component {
     }));
   }
 
+  handleFilterChange({ target }) {
+    this.setState({
+      typedName: target.value,
+    });
+  }
+
   render() {
     const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, buttonDisabled, hasTrunfo, deck } = this.state;
+      image, rare, trunfo, buttonDisabled, hasTrunfo, deck, typedName } = this.state;
+    const filteredDeck = typedName
+      ? deck.filter((card) => card.name.includes(typedName)) : deck;
+      console.log(filteredDeck);
 
     return (
       <>
@@ -117,7 +129,8 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
-        <CardList cardDeck={ deck } onCardDelete={ this.handleDelete } />
+        <Filter typedName={ typedName } onTypedName={ this.handleFilterChange } />
+        <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
       </>
     );
   }
