@@ -7,7 +7,7 @@ function Input(props) {
     <div>
       {
         hasTrunfo
-          ? <h4>Você já tem um Super Trunfo em seu baralho</h4>
+          ? <p>Você já tem um Super Trunfo em seu baralho</p>
           : (
             <label htmlFor={ name }>
               {labelText}

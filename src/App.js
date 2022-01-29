@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import CardList from './components/CardList';
 
 class App extends React.Component {
   constructor() {
@@ -43,7 +44,8 @@ class App extends React.Component {
     });
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
     const { name, description, attr1, attr2, attr3,
       image, rare, trunfo, deck, hasTrunfo } = this.state;
     this.setState({
@@ -74,7 +76,7 @@ class App extends React.Component {
 
   render() {
     const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, buttonDisabled, hasTrunfo } = this.state;
+      image, rare, trunfo, buttonDisabled, hasTrunfo, deck } = this.state;
 
     return (
       <>
@@ -105,6 +107,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
+        <CardList cardDeck={ deck } />
       </>
     );
   }
