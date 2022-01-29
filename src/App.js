@@ -22,6 +22,7 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange({ target }) {
@@ -74,6 +75,15 @@ class App extends React.Component {
     });
   }
 
+  handleDelete({ target }) {
+    const firstChar = 7;
+    const removedCardName = target.id.slice(firstChar);
+    this.setState((previousState) => ({
+      deck: previousState.deck.filter((card) => card.name !== removedCardName),
+      hasTrunfo: !previousState.deck.find((card) => card.name === removedCardName).trunfo,
+    }));
+  }
+
   render() {
     const { name, description, attr1, attr2, attr3,
       image, rare, trunfo, buttonDisabled, hasTrunfo, deck } = this.state;
@@ -107,7 +117,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
-        <CardList cardDeck={ deck } />
+        <CardList cardDeck={ deck } onCardDelete={ this.handleDelete } />
       </>
     );
   }
