@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Input(props) {
-  const { labelText, type, name, value, hasTrunfo, onInputChange } = props;
+  const { labelText, type, name, value, isFilter,
+    hasTrunfo, onInputChange, onFilterChange } = props;
   return (
     <div>
       {
@@ -16,8 +17,8 @@ function Input(props) {
                 id={ name }
                 name={ name }
                 checked={ value }
-                onChange={ onInputChange }
-                data-testid={ `${name}-input` }
+                onChange={ isFilter ? onFilterChange : onInputChange }
+                data-testid={ isFilter ? 'trunfo-filter' : `${name}-input` }
               />
             </label>
           )
@@ -31,8 +32,10 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.bool.isRequired,
+  isFilter: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default Input;

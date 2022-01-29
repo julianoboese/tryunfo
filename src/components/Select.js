@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Select(props) {
-  const { labelText, name, value, isFilter, onInputChange } = props;
+  const { labelText, name, value, isFilter, onInputChange, onFilterChange } = props;
   return (
     <div>
       <label htmlFor={ name }>
@@ -11,7 +11,7 @@ function Select(props) {
           id={ name }
           name={ name }
           value={ value }
-          onChange={ onInputChange }
+          onChange={ isFilter ? onFilterChange : onInputChange }
           data-testid={ isFilter ? 'rare-filter' : `${name}-input` }
         >
           {isFilter && <option value="todas">Todos</option>}
@@ -30,6 +30,7 @@ Select.propTypes = {
   value: PropTypes.string.isRequired,
   isFilter: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default Select;

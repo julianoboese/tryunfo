@@ -21,6 +21,7 @@ class App extends React.Component {
       hasTrunfo: false,
       typedName: '',
       selectedRare: '',
+      checkedTrunfo: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -90,18 +91,20 @@ class App extends React.Component {
 
   handleFilterChange({ target }) {
     this.setState({
-      [target.name]: target.value,
+      [target.name]: target.type === 'checkbox' ? target.checked : target.value,
     });
   }
 
   render() {
     const { name, description, attr1, attr2, attr3,
       image, rare, trunfo, buttonDisabled, hasTrunfo,
-      deck, typedName, selectedRare } = this.state;
+      deck, typedName, selectedRare, checkedTrunfo } = this.state;
     const nameFilteredDeck = typedName
       ? deck.filter((card) => card.name.includes(typedName)) : deck;
-    const filteredDeck = selectedRare && selectedRare !== 'todas'
+    const selectFilteredDeck = selectedRare && selectedRare !== 'todas'
       ? nameFilteredDeck.filter((card) => card.rare === selectedRare) : nameFilteredDeck;
+    const filteredDeck = checkedTrunfo
+      ? deck.filter((card) => card.trunfo) : selectFilteredDeck;
 
     return (
       <>
@@ -137,6 +140,8 @@ class App extends React.Component {
           onTypedName={ this.handleFilterChange }
           selectedRare={ selectedRare }
           onSelectedRare={ this.handleFilterChange }
+          checkedTrunfo={ checkedTrunfo }
+          onCheckedTrunfo={ this.handleFilterChange }
         />
         <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
       </>

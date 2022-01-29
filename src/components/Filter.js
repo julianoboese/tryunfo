@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
 import Select from './Select';
+import InputCheck from './InputCheck';
 
 function Filter(props) {
-  const { typedName, onTypedName, selectedRare, onSelectedRare } = props;
+  const { typedName, onTypedName, selectedRare, onSelectedRare,
+    checkedTrunfo, onCheckedTrunfo } = props;
   return (
     <div>
       <Input
@@ -20,7 +22,15 @@ function Filter(props) {
         name="selectedRare"
         value={ selectedRare }
         isFilter
-        onInputChange={ onSelectedRare }
+        onFilterChange={ onSelectedRare }
+      />
+      <InputCheck
+        labelText="Super Trybe Trunfo"
+        type="checkbox"
+        name="checkedTrunfo"
+        value={ checkedTrunfo }
+        isFilter
+        onFilterChange={ onCheckedTrunfo }
       />
     </div>
   );
@@ -31,6 +41,8 @@ Filter.propTypes = {
   onTypedName: PropTypes.func.isRequired,
   selectedRare: PropTypes.string.isRequired,
   onSelectedRare: PropTypes.func.isRequired,
+  checkedTrunfo: PropTypes.string.isRequired,
+  onCheckedTrunfo: PropTypes.func.isRequired,
 };
 
 export default Filter;
