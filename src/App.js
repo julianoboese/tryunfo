@@ -20,6 +20,7 @@ class App extends React.Component {
       deck: [],
       hasTrunfo: false,
       typedName: '',
+      selectedRare: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -89,16 +90,18 @@ class App extends React.Component {
 
   handleFilterChange({ target }) {
     this.setState({
-      typedName: target.value,
+      [target.name]: target.value,
     });
   }
 
   render() {
     const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, buttonDisabled, hasTrunfo, deck, typedName } = this.state;
-    const filteredDeck = typedName
+      image, rare, trunfo, buttonDisabled, hasTrunfo,
+      deck, typedName, selectedRare } = this.state;
+    const nameFilteredDeck = typedName
       ? deck.filter((card) => card.name.includes(typedName)) : deck;
-      console.log(filteredDeck);
+    const filteredDeck = selectedRare && selectedRare !== 'todas'
+      ? nameFilteredDeck.filter((card) => card.rare === selectedRare) : nameFilteredDeck;
 
     return (
       <>
@@ -129,7 +132,12 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
-        <Filter typedName={ typedName } onTypedName={ this.handleFilterChange } />
+        <Filter
+          typedName={ typedName }
+          onTypedName={ this.handleFilterChange }
+          selectedRare={ selectedRare }
+          onSelectedRare={ this.handleFilterChange }
+        />
         <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
       </>
     );

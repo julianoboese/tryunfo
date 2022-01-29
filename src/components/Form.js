@@ -54,6 +54,8 @@ function Form(props) {
         onInputChange={ onInputChange }
       />
       <Select
+        labelText="Raridade"
+        name="rare"
         value={ cardRare }
         onInputChange={ onInputChange }
       />

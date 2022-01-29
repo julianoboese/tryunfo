@@ -13,7 +13,7 @@ function Input(props) {
           name={ name }
           value={ value }
           onChange={ isFilter ? onFilterChange : onInputChange }
-          data-testid={ isFilter ? name : `${name}-input` }
+          data-testid={ isFilter ? 'name-filter' : `${name}-input` }
         />
       </label>
     </div>
@@ -27,6 +27,7 @@ Input.propTypes = {
   value: PropTypes.string.isRequired,
   isFilter: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default Input;
