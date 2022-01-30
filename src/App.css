@@ -12,6 +12,11 @@ header {
   justify-content: center;
 }
 
+h2 {
+  font-size: 28px;
+  margin: 50px;
+}
+
 .new-card {
   display: flex;
   height: 100vh;
@@ -21,7 +26,7 @@ header {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: 50vw;
 }
 
@@ -40,13 +45,50 @@ header {
   justify-content: center;
 }
 
+form {
+  width: 25vw;
+}
+
 .form-input, .form-select, .form-check {
   display: flex;
-  margin: 10px 0;
+  margin: 20px 0;
+}
+
+.form-input label, .form-select label {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 10px 5px 0;
+}
+
+.form-check label {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 0 5px 10px;
+
 }
 
 .name, .description, .rare {
   flex-direction: column;
+}
+
+.name input {
+  border-bottom: 1px solid #3d495c;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  font-size: 14px;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.description textarea {
+  border-bottom: 1px solid #3d495c;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  font-size: 14px;
+  height: 80px;
+  padding: 10px 5px;
 }
 
 /* Card design */
@@ -76,7 +118,7 @@ header {
   background-color: #023031;
   border-radius: 10px 10px 0 0;
   color: white;
-  font-size: 1.8rem;
+  font-size: 28px;
   font-weight: 700;
   height: 40px;
   line-height: 42px;

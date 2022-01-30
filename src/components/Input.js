@@ -6,15 +6,21 @@ function Input(props) {
   return (
     <div className={ `form-input ${name}` }>
       <label htmlFor={ name }>{labelText}</label>
-      <input
+      {type === 'textarea' ? <textarea
         type={ type }
         id={ name }
         name={ name }
         value={ value }
         onChange={ isFilter ? onFilterChange : onInputChange }
         data-testid={ isFilter ? 'name-filter' : `${name}-input` }
-      />
-
+      /> : <input
+        type={ type }
+        id={ name }
+        name={ name }
+        value={ value }
+        onChange={ isFilter ? onFilterChange : onInputChange }
+        data-testid={ isFilter ? 'name-filter' : `${name}-input` }
+      />}
     </div>
   );
 }

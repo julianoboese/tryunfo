@@ -42,9 +42,6 @@ class App extends React.Component {
         .then((response) => response.json())
         .then((data) => this.setState({
           imgUrl: data.sprites.other['official-artwork'].front_default,
-        // .then((data) => this.setState({
-        //   imgUrl: data.sprites.versions['generation-v']['black-white']
-        //     .animated.front_default,
         }));
       const maxTotal = 210;
       const maxEach = 90;

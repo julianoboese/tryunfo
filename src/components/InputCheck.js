@@ -11,7 +11,6 @@ function Input(props) {
           ? <p>Você já tem um Super Trunfo em seu baralho</p>
           : (
             <>
-              <label htmlFor={ name }>{labelText}</label>
               <input
                 type={ type }
                 id={ name }
@@ -20,6 +19,7 @@ function Input(props) {
                 onChange={ isFilter ? onFilterChange : onInputChange }
                 data-testid={ isFilter ? 'trunfo-filter' : `${name}-input` }
               />
+              <label htmlFor={ name }>{labelText}</label>
             </>
           )
       }
