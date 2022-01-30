@@ -3,6 +3,8 @@ import Form from './components/Form';
 import Card from './components/Card';
 import CardList from './components/CardList';
 import Filter from './components/Filter';
+import './App.css';
+import { ReactComponent as Logo } from './logo.svg';
 
 class App extends React.Component {
   constructor() {
@@ -108,33 +110,41 @@ class App extends React.Component {
 
     return (
       <>
-        <div>
-          <h1>Tryunfo</h1>
-        </div>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-          hasTrunfo={ hasTrunfo }
-          onInputChange={ this.handleChange }
-          isSaveButtonDisabled={ buttonDisabled }
-          onSaveButtonClick={ this.handleSubmit }
-        />
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-        />
+        <header>
+          <Logo />
+        </header>
+        <section className="new-card">
+          <section className="card-add">
+            <h2>Adicionar nova carta</h2>
+            <Form
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ image }
+              cardRare={ rare }
+              cardTrunfo={ trunfo }
+              hasTrunfo={ hasTrunfo }
+              onInputChange={ this.handleChange }
+              isSaveButtonDisabled={ buttonDisabled }
+              onSaveButtonClick={ this.handleSubmit }
+            />
+          </section>
+          <section className="card-preview">
+            <h2>Pré-visualização</h2>
+            <Card
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ image }
+              cardRare={ rare }
+              cardTrunfo={ trunfo }
+            />
+          </section>
+        </section>
         <Filter
           typedName={ typedName }
           onTypedName={ this.handleFilterChange }

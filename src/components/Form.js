@@ -10,72 +10,73 @@ function Form(props) {
     onInputChange, onSaveButtonClick } = props;
 
   return (
-    <form onSubmit={ onSaveButtonClick }>
-      <Input
-        labelText="Nome"
-        type="text"
-        name="name"
-        value={ cardName }
-        onInputChange={ onInputChange }
-      />
-      <Input
-        labelText="Description"
-        type="textarea"
-        name="description"
-        value={ cardDescription }
-        onInputChange={ onInputChange }
-      />
-      <Input
-        labelText="Attr01"
-        type="number"
-        name="attr1"
-        value={ cardAttr1 }
-        onInputChange={ onInputChange }
-      />
-      <Input
-        labelText="Attr02"
-        type="number"
-        name="attr2"
-        value={ cardAttr2 }
-        onInputChange={ onInputChange }
-      />
-      <Input
-        labelText="Attr03"
-        type="number"
-        name="attr3"
-        value={ cardAttr3 }
-        onInputChange={ onInputChange }
-      />
-      <Input
-        labelText="Imagem"
-        type="text"
-        name="image"
-        value={ cardImage }
-        onInputChange={ onInputChange }
-      />
-      <Select
-        labelText="Raridade"
-        name="rare"
-        value={ cardRare }
-        onInputChange={ onInputChange }
-      />
-      <InputCheck
-        labelText="Super Trybe Trunfo"
-        type="checkbox"
-        name="trunfo"
-        value={ cardTrunfo }
-        hasTrunfo={ hasTrunfo }
-        onInputChange={ onInputChange }
-      />
-      <button
-        type="submit"
-        disabled={ isSaveButtonDisabled }
-        data-testid="save-button"
-      >
-        Salvar
-
-      </button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={ onSaveButtonClick }>
+        <Input
+          labelText="Nome"
+          type="text"
+          name="name"
+          value={ cardName }
+          onInputChange={ onInputChange }
+        />
+        <Input
+          labelText="Description"
+          type="textarea"
+          name="description"
+          value={ cardDescription }
+          onInputChange={ onInputChange }
+        />
+        <Input
+          labelText="Attr01"
+          type="number"
+          name="attr1"
+          value={ cardAttr1 }
+          onInputChange={ onInputChange }
+        />
+        <Input
+          labelText="Attr02"
+          type="number"
+          name="attr2"
+          value={ cardAttr2 }
+          onInputChange={ onInputChange }
+        />
+        <Input
+          labelText="Attr03"
+          type="number"
+          name="attr3"
+          value={ cardAttr3 }
+          onInputChange={ onInputChange }
+        />
+        <Input
+          labelText="Imagem"
+          type="text"
+          name="image"
+          value={ cardImage }
+          onInputChange={ onInputChange }
+        />
+        <Select
+          labelText="Raridade"
+          name="rare"
+          value={ cardRare }
+          onInputChange={ onInputChange }
+        />
+        <InputCheck
+          labelText="Super Trybe Trunfo"
+          type="checkbox"
+          name="trunfo"
+          value={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
+          onInputChange={ onInputChange }
+        />
+        <button
+          type="submit"
+          disabled={ isSaveButtonDisabled }
+          data-testid="save-button"
+        >
+          Salvar
+        </button>
+      </form>
+    </div>
   );
 }
 

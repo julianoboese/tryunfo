@@ -5,13 +5,13 @@ function Input(props) {
   const { labelText, type, name, value, isFilter,
     hasTrunfo, onInputChange, onFilterChange } = props;
   return (
-    <div>
+    <div className={ `form-check ${name}` }>
       {
         hasTrunfo
           ? <p>Você já tem um Super Trunfo em seu baralho</p>
           : (
-            <label htmlFor={ name }>
-              {labelText}
+            <>
+              <label htmlFor={ name }>{labelText}</label>
               <input
                 type={ type }
                 id={ name }
@@ -20,7 +20,7 @@ function Input(props) {
                 onChange={ isFilter ? onFilterChange : onInputChange }
                 data-testid={ isFilter ? 'trunfo-filter' : `${name}-input` }
               />
-            </label>
+            </>
           )
       }
     </div>

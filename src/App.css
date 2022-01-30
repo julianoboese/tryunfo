@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.new-card {
+  display: flex;
+  height: 100vh;
+}
+
+.card-add, .card-preview {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50vw;
+}
+
+.card-add {
+  background-color: #fafafa;
+}
+
+.card-preview {
+  background-color: #023031;
+  color: white;
+  padding-bottom: 50px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-input, .form-select, .form-check {
+  display: flex;
+  margin: 10px 0;
+}
+
+.name, .description, .rare {
+  flex-direction: column;
+}
+
+/* Card design */
+.outer-bound {
+  background-color: white;
+  border: 10px solid white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  height: 549px;
+  width: 368px;
+}
+
+.inner-bound {
+  border: 15px solid #036b52;
+  border-radius: 10px;
+  height: 100%;
+}

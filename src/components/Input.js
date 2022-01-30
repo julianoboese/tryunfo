@@ -4,18 +4,17 @@ import PropTypes from 'prop-types';
 function Input(props) {
   const { labelText, type, name, value, isFilter, onInputChange, onFilterChange } = props;
   return (
-    <div>
-      <label htmlFor={ name }>
-        {labelText}
-        <input
-          type={ type }
-          id={ name }
-          name={ name }
-          value={ value }
-          onChange={ isFilter ? onFilterChange : onInputChange }
-          data-testid={ isFilter ? 'name-filter' : `${name}-input` }
-        />
-      </label>
+    <div className={ `form-input ${name}` }>
+      <label htmlFor={ name }>{labelText}</label>
+      <input
+        type={ type }
+        id={ name }
+        name={ name }
+        value={ value }
+        onChange={ isFilter ? onFilterChange : onInputChange }
+        data-testid={ isFilter ? 'name-filter' : `${name}-input` }
+      />
+
     </div>
   );
 }
