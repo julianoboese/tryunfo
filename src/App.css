@@ -66,6 +66,12 @@ header {
   height: 100%;
 }
 
+.inner-bound {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .inner-bound h3 {
   background-color: #023031;
   border-radius: 10px 10px 0 0;
@@ -76,4 +82,19 @@ header {
   line-height: 42px;
   padding: 0 10px;
   text-align: right;
+  width: 100%;
+}
+
+.img-bound {
+  background-color: #023031;
+  text-align: center;
+  width: 100%;
+}
+
+.img-bound img {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  height: 300px;
+  max-width: 100%;
+  padding: 50px;
 }

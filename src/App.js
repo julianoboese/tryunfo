@@ -24,6 +24,7 @@ class App extends React.Component {
       typedName: '',
       selectedRare: '',
       checkedTrunfo: false,
+      imgUrl: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,17 +38,25 @@ class App extends React.Component {
       [target.name]: target.type === 'checkbox' ? target.checked : target.value,
     }), () => {
       const { name, description, attr1, attr2, attr3, image, rare } = this.state;
+      fetch(`https://pokeapi.co/api/v2/pokemon/${image.toLowerCase()}`)
+        .then((response) => response.json())
+        .then((data) => this.setState({
+          imgUrl: data.sprites.other['official-artwork'].front_default,
+        // .then((data) => this.setState({
+        //   imgUrl: data.sprites.versions['generation-v']['black-white']
+        //     .animated.front_default,
+        }));
       const maxTotal = 210;
       const maxEach = 90;
       const firstCondition = name && description && image && rare;
       const secondCondition = parseInt(attr1, 10) + parseInt(attr2, 10)
-        + parseInt(attr3, 10) <= maxTotal;
+          + parseInt(attr3, 10) <= maxTotal;
       const thirdCondition = attr1 <= maxEach && attr2 <= maxEach && attr3 <= maxEach;
       const fourthCondition = attr1 >= 0 && attr2 >= 0 && attr3 >= 0;
 
       this.setState(() => ({
         buttonDisabled: !(firstCondition && secondCondition
-      && thirdCondition && fourthCondition),
+        && thirdCondition && fourthCondition),
       }));
     });
   }
@@ -55,7 +64,7 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, deck, hasTrunfo } = this.state;
+      image, rare, trunfo, deck, hasTrunfo, imgUrl } = this.state;
     this.setState({
       deck: [...deck, {
         name,
@@ -66,6 +75,7 @@ class App extends React.Component {
         image,
         rare,
         trunfo,
+        imgUrl,
       }],
     }, () => {
       this.setState({
@@ -100,7 +110,7 @@ class App extends React.Component {
   render() {
     const { name, description, attr1, attr2, attr3,
       image, rare, trunfo, buttonDisabled, hasTrunfo,
-      deck, typedName, selectedRare, checkedTrunfo } = this.state;
+      deck, typedName, selectedRare, checkedTrunfo, imgUrl } = this.state;
     const nameFilteredDeck = typedName
       ? deck.filter((card) => card.name.includes(typedName)) : deck;
     const selectFilteredDeck = selectedRare && selectedRare !== 'todas'
@@ -139,7 +149,7 @@ class App extends React.Component {
               cardAttr1={ attr1 }
               cardAttr2={ attr2 }
               cardAttr3={ attr3 }
-              cardImage={ image }
+              cardImage={ imgUrl }
               cardRare={ rare }
               cardTrunfo={ trunfo }
             />

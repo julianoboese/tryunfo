@@ -16,7 +16,7 @@ function CardList(props) {
               cardAttr1={ card.attr1 }
               cardAttr2={ card.attr2 }
               cardAttr3={ card.attr3 }
-              cardImage={ card.image }
+              cardImage={ card.imgUrl }
               cardRare={ card.rare }
               cardTrunfo={ card.trunfo }
             />

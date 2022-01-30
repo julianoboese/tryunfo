@@ -27,21 +27,21 @@ function Form(props) {
           onInputChange={ onInputChange }
         />
         <Input
-          labelText="Attr01"
+          labelText="HP"
           type="number"
           name="attr1"
           value={ cardAttr1 }
           onInputChange={ onInputChange }
         />
         <Input
-          labelText="Attr02"
+          labelText="ATK"
           type="number"
           name="attr2"
           value={ cardAttr2 }
           onInputChange={ onInputChange }
         />
         <Input
-          labelText="Attr03"
+          labelText="DEF"
           type="number"
           name="attr3"
           value={ cardAttr3 }
