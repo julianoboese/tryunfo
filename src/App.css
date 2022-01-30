@@ -12,14 +12,9 @@ header {
   justify-content: center;
 }
 
-h2 {
-  font-size: 28px;
-  margin: 50px;
-}
-
 .new-card {
   display: flex;
-  height: 100vh;
+  height: 100%;
 }
 
 .card-add, .card-preview {
@@ -40,24 +35,38 @@ h2 {
   padding-bottom: 50px;
 }
 
+h2 {
+  font-size: 28px;
+  margin-top: 50px;
+}
+
+.card-add h2 {
+  margin-bottom: 25px;
+}
+
+.card-preview h2 {
+  margin-bottom: 70px;
+}
+
 .form-container {
   display: flex;
   justify-content: center;
 }
 
 form {
-  width: 25vw;
+  padding-bottom: 50px;
+  width: 22vw;
 }
 
 .form-input, .form-select, .form-check {
   display: flex;
-  margin: 20px 0;
+  margin: 22px 0;
 }
 
 .form-input label, .form-select label {
   font-size: 16px;
   font-weight: 700;
-  padding: 5px 10px 5px 0;
+  padding: 5px 10px 8px 0;
 }
 
 .form-check label {
@@ -71,8 +80,12 @@ form {
   flex-direction: column;
 }
 
+.attr1, .attr2, .attr3, .image, .trunfo {
+  align-items: center;
+}
+
 .name input {
-  border-bottom: 1px solid #3d495c;
+  border-bottom: 1px solid black;
   border-left-width: 0;
   border-right-width: 0;
   border-top-width: 0;
@@ -82,13 +95,60 @@ form {
 }
 
 .description textarea {
-  border-bottom: 1px solid #3d495c;
+  border-bottom: 1px solid black;
   border-left-width: 0;
   border-right-width: 0;
   border-top-width: 0;
   font-size: 14px;
   height: 80px;
   padding: 10px 5px;
+}
+
+.attr1 label, .attr2 label, .attr3 label {
+  width: 50px;
+}
+
+.attr1 input, .attr2 input, .attr3 input, .image input {
+  border: 1px solid #29313d;
+  border-radius: 2px;
+  flex: 1;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.rare select {
+  border-bottom: 1px solid black;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  font-size: 14px;
+  height: 40px;
+  padding: 3px 5px 0;
+}
+
+.trunfo input {
+  border: 1px solid black;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+}
+
+.trunfo input:hover {
+  cursor: pointer;
+}
+
+form button {
+  background-color: #003be5;
+  border-radius: 2px;
+  border-width: 0;
+  color: white;
+  font-size: 16px;
+  padding: 10px 32px;
+}
+
+form button:hover {
+  background-color: #0039e59a;
+  cursor: pointer;
 }
 
 /* Card design */
@@ -98,7 +158,7 @@ form {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
   height: 549px;
-  width: 368px;
+  width: 350px;
 }
 
 .middle-bound {
@@ -129,6 +189,8 @@ form {
 
 .img-bound {
   background-color: #023031;
+  height: 300px;
+  line-height: 0;
   text-align: center;
   width: 100%;
 }
@@ -137,6 +199,5 @@ form {
   background-color: white;
   border-radius: 10px 10px 0 0;
   height: 300px;
-  max-width: 100%;
   padding: 50px;
 }

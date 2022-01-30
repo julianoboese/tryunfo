@@ -20,7 +20,7 @@ function Form(props) {
           onInputChange={ onInputChange }
         />
         <Input
-          labelText="Description"
+          labelText="Descrição"
           type="textarea"
           name="description"
           value={ cardDescription }

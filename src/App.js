@@ -42,7 +42,8 @@ class App extends React.Component {
         .then((response) => response.json())
         .then((data) => this.setState({
           imgUrl: data.sprites.other['official-artwork'].front_default,
-        }));
+        }))
+        .catch(() => this.setState((previousState) => previousState));
       const maxTotal = 210;
       const maxEach = 90;
       const firstCondition = name && description && image && rare;
