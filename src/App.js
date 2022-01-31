@@ -4,7 +4,7 @@ import Card from './components/Card';
 import CardList from './components/CardList';
 import Filter from './components/Filter';
 import './App.css';
-import { ReactComponent as Logo } from './logo.svg';
+import logo from './logo-poketrunfo.png';
 
 class App extends React.Component {
   constructor() {
@@ -120,7 +120,7 @@ class App extends React.Component {
     return (
       <>
         <header>
-          <Logo />
+          <img src={ logo } alt="Logo do Poketrunfo" />
         </header>
         <section className="new-card">
           <section className="card-add">
