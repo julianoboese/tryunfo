@@ -18,14 +18,21 @@ function Card(props) {
             />
 
           </div>
-          <div className="details">
-            <p data-testid="description-card">{cardDescription}</p>
-            <h4 data-testid="attr1-card">{cardAttr1}</h4>
-            <h4 data-testid="attr2-card">{cardAttr2}</h4>
-            <h4 data-testid="attr3-card">{cardAttr3}</h4>
-            <h5 data-testid="rare-card">{cardRare}</h5>
-            {cardTrunfo && <h4 data-testid="trunfo-card">Super Trunfo</h4>}
+          <p data-testid="description-card">{cardDescription}</p>
+          <div className="attr">
+            <h4>HP....................................</h4>
+            <span data-testid="attr1-card">{cardAttr1}</span>
           </div>
+          <div className="attr">
+            <h4>ATK..................................</h4>
+            <span data-testid="attr2-card">{cardAttr2}</span>
+          </div>
+          <div className="attr">
+            <h4>DEF..................................</h4>
+            <span data-testid="attr3-card">{cardAttr3}</span>
+          </div>
+          <h5 data-testid="rare-card">{cardRare}</h5>
+          {cardTrunfo && <h4 data-testid="trunfo-card">Super Trunfo</h4>}
         </div>
       </div>
     </div>
