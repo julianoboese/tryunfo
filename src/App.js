@@ -3,6 +3,8 @@ import Form from './components/Form';
 import Card from './components/Card';
 import CardList from './components/CardList';
 import Filter from './components/Filter';
+import CurrentCard from './components/CurrentCard';
+import RemainingCards from './components/RemainingCards';
 import './App.css';
 import logo from './logo-poketrunfo.png';
 
@@ -25,12 +27,17 @@ class App extends React.Component {
       selectedRare: '',
       checkedTrunfo: false,
       imgUrl: '',
+      isGame: false,
+      shuffledDeck: [],
+      currentCard: 0,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleStartClick = this.handleStartClick.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -62,9 +69,9 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, deck, hasTrunfo, imgUrl } = this.state;
-    this.setState({
-      deck: [...deck, {
+      image, rare, trunfo, hasTrunfo, imgUrl } = this.state;
+    this.setState((previousState) => ({
+      deck: [...previousState.deck, {
         name,
         description,
         attr1,
@@ -75,7 +82,7 @@ class App extends React.Component {
         trunfo,
         imgUrl,
       }],
-    }, () => {
+    }), () => {
       this.setState({
         name: '',
         description: '',
@@ -106,10 +113,23 @@ class App extends React.Component {
     });
   }
 
+  handleStartClick() {
+    const sortBound = 0.5;
+    this.setState((previousState) => ({
+      shuffledDeck: previousState.deck.slice(0).sort(() => Math.random() - sortBound),
+      isGame: true,
+    }));
+  }
+
+  handleNextClick() {
+    console.log(this.state.currentCard);
+    this.setState((previousState) => ({ currentCard: previousState + 1 }), console.log(this.state.currentCard));
+  }
+
   render() {
-    const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, buttonDisabled, hasTrunfo,
-      deck, typedName, selectedRare, checkedTrunfo, imgUrl } = this.state;
+    const { name, description, attr1, attr2, attr3, image, rare, trunfo,
+      buttonDisabled, hasTrunfo, deck, typedName, selectedRare, checkedTrunfo,
+      imgUrl, isGame, shuffledDeck, currentCard } = this.state;
     const nameFilteredDeck = typedName
       ? deck.filter((card) => card.name.includes(typedName)) : deck;
     const selectFilteredDeck = selectedRare && selectedRare !== 'todas'
@@ -169,6 +189,25 @@ class App extends React.Component {
           </section>
           <section className="card-list">
             <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
+          </section>
+        </section>
+        <section className="game">
+          {
+            !isGame
+          && <button type="button" onClick={ this.handleStartClick }>Jogar</button>
+          }
+          <section className="gameplay">
+            {
+              isGame
+              && <CurrentCard
+                currentCard={ shuffledDeck[currentCard] }
+                isGame={ isGame }
+              />
+            }
+            {
+              isGame
+              && <RemainingCards onNextClick={ this.handleNextClick } />
+            }
           </section>
         </section>
       </>
