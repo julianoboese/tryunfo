@@ -101,6 +101,7 @@ class App extends React.Component {
         rare: 'normal',
         hasTrunfo: trunfo || hasTrunfo,
         trunfo: false,
+        buttonDisabled: true,
         imgUrl: '',
       });
     });
