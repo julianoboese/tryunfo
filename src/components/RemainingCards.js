@@ -7,7 +7,8 @@ function RemainingCards(props) {
   return (
     <div>
       {
-        lastCard ? <button type="button" onClick={ onNextClick }>Embaralhar cartas</button>
+        lastCard
+          ? <button type="button" onClick={ onNextClick }>Embaralhar cartas</button>
           : (
             <>
               <div className="outer-remaining">

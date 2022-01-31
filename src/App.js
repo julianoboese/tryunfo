@@ -6,6 +6,12 @@ import Filter from './components/Filter';
 import CurrentCard from './components/CurrentCard';
 import RemainingCards from './components/RemainingCards';
 import './App.css';
+import './style/AddCardSection.css';
+import './style/Form.css';
+import './style/Card.css';
+import './style/DeckSection.css';
+import './style/Filter.css';
+import './style/Game.css';
 import logo from './logo-poketrunfo.png';
 
 class App extends React.Component {
