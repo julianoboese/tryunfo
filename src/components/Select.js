@@ -5,7 +5,7 @@ function Select(props) {
   const { labelText, name, value, isFilter, onInputChange, onFilterChange } = props;
   return (
     <div className={ `form-select ${name}` }>
-      <label htmlFor={ name }>{labelText}</label>
+      {!isFilter && <label htmlFor={ name }>{labelText}</label>}
       <select
         id={ name }
         name={ name }

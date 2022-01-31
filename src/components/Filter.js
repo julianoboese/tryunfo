@@ -8,9 +8,8 @@ function Filter(props) {
   const { typedName, onTypedName, selectedRare, onSelectedRare,
     checkedTrunfo, onCheckedTrunfo } = props;
   return (
-    <div>
+    <div className="filter-container">
       <Input
-        labelText="Filtro de Nome"
         type="text"
         name="typedName"
         value={ typedName }
@@ -18,7 +17,6 @@ function Filter(props) {
         onFilterChange={ onTypedName }
       />
       <Select
-        labelText="Filtro de Raridade"
         name="selectedRare"
         value={ selectedRare }
         isFilter

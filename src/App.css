@@ -12,6 +12,7 @@ header {
   justify-content: center;
 }
 
+/* ---------- Add Card Section ---------- */
 .new-card {
   display: flex;
   height: 100%;
@@ -27,6 +28,7 @@ header {
 
 .card-add {
   background-color: #fafafa;
+  border-bottom: 5px solid #3761a8;
 }
 
 .card-preview {
@@ -53,6 +55,7 @@ h2 {
   justify-content: center;
 }
 
+/* Form design */
 form {
   padding-bottom: 50px;
   width: 22vw;
@@ -133,10 +136,6 @@ form {
   width: 18px;
 }
 
-.trunfo input:hover {
-  cursor: pointer;
-}
-
 form button {
   background-color: #3761a8;
   border-radius: 2px;
@@ -144,15 +143,6 @@ form button {
   color: white;
   font-size: 16px;
   padding: 10px 32px;
-}
-
-form button:disabled {
-  background-color: lightgray;
-}
-
-form button:hover:not( [ disabled ] ) {
-  background-color: #3760a8c2;
-  cursor: pointer;
 }
 
 /* Card design */
@@ -174,6 +164,7 @@ form button:hover:not( [ disabled ] ) {
 
 .inner-bound {
   align-items: center;
+  color: white;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -182,7 +173,6 @@ form button:hover:not( [ disabled ] ) {
 .inner-bound h3 {
   background-color: #ef5350;
   border-radius: 10px 10px 0 0;
-  color: white;
   font-size: 28px;
   font-weight: 700;
   height: 40px;
@@ -210,8 +200,7 @@ form button:hover:not( [ disabled ] ) {
 .inner-bound p {
   font-size: 10px;
   height: 30px;
-  margin: 10px 0;
-  text-align: justify;
+  margin: 10px 5px;
 }
 
 .details {
@@ -293,4 +282,109 @@ form button:hover:not( [ disabled ] ) {
 
 .gold .details {
   background-color: gold;
+}
+
+/* ---------- Deck Section ---------- */
+.saved-cards {
+  display: flex;
+  height: 100%;
+}
+
+.card-filter, .card-list {
+  align-items: center;
+  background-color: #fafafa;
+  display: flex;
+}
+
+.card-filter {
+  flex-direction: column;
+  width: 33vw;
+}
+
+.card-list {
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  width: 67vw;
+}
+
+.card-filter h2 {
+  margin-bottom: 25px;
+}
+
+.card-filter p {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-list > div {
+  margin: 30px;
+  text-align: center;
+}
+
+/* Filter design */
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+}
+
+.typedName, .selectedRare {
+  margin-bottom: 0;
+}
+
+.typedName input {
+  border: 1px solid #29313d;
+  border-radius: 6px;
+  flex: 1;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.selectedRare select {
+  border: 1px solid #29313d;
+  border-radius: 6px;
+  flex: 1;
+  height: 37px;
+  padding: 3px 5px 0;
+}
+
+.checkedTrunfo input {
+  border: 1px solid black;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+}
+
+.checkedTrunfo input:hover {
+  cursor: pointer;
+}
+
+.card-list button {
+  background-color: white;
+  border: 3px solid #3761a8;
+  border-radius: 2px;
+  color: #3761a8;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 10px 32px 8px;
+}
+
+/* Pseudoclasses no final do código para atender o Stylelint */
+.trunfo input:hover {
+  cursor: pointer;
+}
+
+form button:disabled {
+  background-color: lightgray;
+}
+
+.card-list button:hover {
+  background-color: #3760a817;
+  cursor: pointer;
+}
+
+form button:hover:not( [ disabled ] ) {
+  background-color: #3760a8c2;
+  cursor: pointer;
 }

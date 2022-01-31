@@ -6,7 +6,7 @@ function CardList(props) {
   const { cardDeck, onCardDelete } = props;
 
   return (
-    <div>
+    <>
       {cardDeck.map((card) => (
         <div key={ card.name }>
           <div>
@@ -31,7 +31,7 @@ function CardList(props) {
           </button>
         </div>
       ))}
-    </div>
+    </>
   );
 }
 

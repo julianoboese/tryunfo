@@ -86,6 +86,7 @@ class App extends React.Component {
         rare: 'normal',
         hasTrunfo: trunfo || hasTrunfo,
         trunfo: false,
+        imgUrl: '',
       });
     });
   }
@@ -153,15 +154,23 @@ class App extends React.Component {
             />
           </section>
         </section>
-        <Filter
-          typedName={ typedName }
-          onTypedName={ this.handleFilterChange }
-          selectedRare={ selectedRare }
-          onSelectedRare={ this.handleFilterChange }
-          checkedTrunfo={ checkedTrunfo }
-          onCheckedTrunfo={ this.handleFilterChange }
-        />
-        <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
+        <section className="saved-cards">
+          <section className="card-filter">
+            <h2>Todas as cartas</h2>
+            <p>Filtros de busca</p>
+            <Filter
+              typedName={ typedName }
+              onTypedName={ this.handleFilterChange }
+              selectedRare={ selectedRare }
+              onSelectedRare={ this.handleFilterChange }
+              checkedTrunfo={ checkedTrunfo }
+              onCheckedTrunfo={ this.handleFilterChange }
+            />
+          </section>
+          <section className="card-list">
+            <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
+          </section>
+        </section>
       </>
     );
   }

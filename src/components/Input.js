@@ -5,7 +5,7 @@ function Input(props) {
   const { labelText, type, name, value, isFilter, onInputChange, onFilterChange } = props;
   return (
     <div className={ `form-input ${name}` }>
-      <label htmlFor={ name }>{labelText}</label>
+      {!isFilter && <label htmlFor={ name }>{labelText}</label>}
       {type === 'textarea' ? <textarea
         type={ type }
         id={ name }
