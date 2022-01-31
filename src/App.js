@@ -30,6 +30,7 @@ class App extends React.Component {
       isGame: false,
       shuffledDeck: [],
       currentCard: 0,
+      showList: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -82,6 +83,7 @@ class App extends React.Component {
         trunfo,
         imgUrl,
       }],
+      showList: true,
     }), () => {
       this.setState({
         name: '',
@@ -118,24 +120,28 @@ class App extends React.Component {
     this.setState((previousState) => ({
       shuffledDeck: previousState.deck.slice(0).sort(() => Math.random() - sortBound),
       isGame: true,
+      currentCard: 0,
     }));
   }
 
   handleNextClick() {
-    console.log(this.state.currentCard);
-    this.setState((previousState) => ({ currentCard: previousState + 1 }), console.log(this.state.currentCard));
+    this.setState((previousState) => ({
+      currentCard: previousState.currentCard + 1,
+    }));
   }
 
   render() {
     const { name, description, attr1, attr2, attr3, image, rare, trunfo,
       buttonDisabled, hasTrunfo, deck, typedName, selectedRare, checkedTrunfo,
-      imgUrl, isGame, shuffledDeck, currentCard } = this.state;
+      imgUrl, isGame, shuffledDeck, currentCard, showList } = this.state;
     const nameFilteredDeck = typedName
       ? deck.filter((card) => card.name.includes(typedName)) : deck;
     const selectFilteredDeck = selectedRare && selectedRare !== 'todas'
       ? nameFilteredDeck.filter((card) => card.rare === selectedRare) : nameFilteredDeck;
     const filteredDeck = checkedTrunfo
       ? deck.filter((card) => card.trunfo) : selectFilteredDeck;
+
+    const lastCard = currentCard === shuffledDeck.length - 1;
 
     return (
       <>
@@ -174,42 +180,47 @@ class App extends React.Component {
             />
           </section>
         </section>
-        <section className="saved-cards">
-          <section className="card-filter">
-            <h2>Todas as cartas</h2>
-            <p>Filtros de busca</p>
-            <Filter
-              typedName={ typedName }
-              onTypedName={ this.handleFilterChange }
-              selectedRare={ selectedRare }
-              onSelectedRare={ this.handleFilterChange }
-              checkedTrunfo={ checkedTrunfo }
-              onCheckedTrunfo={ this.handleFilterChange }
-            />
-          </section>
-          <section className="card-list">
-            <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
-          </section>
-        </section>
-        <section className="game">
-          {
-            !isGame
+        {showList
+        && (
+          <>
+            <section className="saved-cards">
+              <section className="card-filter">
+                <h2>Todas as cartas</h2>
+                <p>Filtros de busca</p>
+                <Filter
+                  typedName={ typedName }
+                  onTypedName={ this.handleFilterChange }
+                  selectedRare={ selectedRare }
+                  onSelectedRare={ this.handleFilterChange }
+                  checkedTrunfo={ checkedTrunfo }
+                  onCheckedTrunfo={ this.handleFilterChange }
+                />
+              </section>
+              <section className="card-list">
+                <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
+              </section>
+            </section>
+            <section className={ `game ${isGame && 'on-game'}` }>
+              {
+                !isGame
           && <button type="button" onClick={ this.handleStartClick }>Jogar</button>
-          }
-          <section className="gameplay">
-            {
-              isGame
-              && <CurrentCard
-                currentCard={ shuffledDeck[currentCard] }
-                isGame={ isGame }
+              }
+              <section className={ `gameplay ${lastCard && 'game-over'}` }>
+                {
+                  isGame
+              && <CurrentCard currentCard={ shuffledDeck[currentCard] } />
+                }
+                {
+                  isGame
+              && <RemainingCards
+                lastCard={ lastCard }
+                onNextClick={ lastCard ? this.handleStartClick : this.handleNextClick }
               />
-            }
-            {
-              isGame
-              && <RemainingCards onNextClick={ this.handleNextClick } />
-            }
-          </section>
-        </section>
+                }
+              </section>
+            </section>
+          </>
+        )}
       </>
     );
   }

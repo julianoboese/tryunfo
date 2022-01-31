@@ -395,6 +395,9 @@ form button:hover:not( [ disabled ] ) {
   text-align: center;
 }
 
+.on-game {
+  height: 100vh;
+}
 
 .game button {
   background-color: #bd3736;
@@ -420,14 +423,26 @@ form button:hover:not( [ disabled ] ) {
   justify-content: center;
 }
 
+.game-over {
+  align-items: center;
+}
+
+.game-over button {
+  margin-left: 59px;
+}
+
+.current-card {
+  margin: 80px 20px 0;
+}
+
 .outer-remaining {
   background-color: white;
   border: 10px solid white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
   height: 549px;
+  margin: 80px 20px 0;
   width: 310px;
-  margin-top: 80px;
 }
 
 .inner-remaining {

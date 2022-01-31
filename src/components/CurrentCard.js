@@ -5,16 +5,18 @@ import Card from './Card';
 function CurrentCard(props) {
   const { currentCard } = props;
   return (
-    <Card
-      cardName={ currentCard.name }
-      cardDescription={ currentCard.description }
-      cardAttr1={ currentCard.attr1 }
-      cardAttr2={ currentCard.attr2 }
-      cardAttr3={ currentCard.attr3 }
-      cardImage={ currentCard.imgUrl }
-      cardRare={ currentCard.rare }
-      cardTrunfo={ currentCard.trunfo }
-    />
+    <div className="current-card">
+      <Card
+        cardName={ currentCard.name }
+        cardDescription={ currentCard.description }
+        cardAttr1={ currentCard.attr1 }
+        cardAttr2={ currentCard.attr2 }
+        cardAttr3={ currentCard.attr3 }
+        cardImage={ currentCard.imgUrl }
+        cardRare={ currentCard.rare }
+        cardTrunfo={ currentCard.trunfo }
+      />
+    </div>
   );
 }
 
