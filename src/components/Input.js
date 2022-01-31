@@ -18,6 +18,7 @@ function Input(props) {
         id={ name }
         name={ name }
         value={ value }
+        placeholder={ name === 'image' && 'Digite o nome do Pokemon' }
         onChange={ isFilter ? onFilterChange : onInputChange }
         data-testid={ isFilter ? 'name-filter' : `${name}-input` }
       />}
@@ -25,12 +26,16 @@ function Input(props) {
   );
 }
 
+Input.defaultProps = {
+  isFilter: false,
+};
+
 Input.propTypes = {
   labelText: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  isFilter: PropTypes.bool.isRequired,
+  isFilter: PropTypes.bool,
   onInputChange: PropTypes.func.isRequired,
   onFilterChange: PropTypes.func.isRequired,
 };

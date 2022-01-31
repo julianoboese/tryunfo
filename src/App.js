@@ -36,7 +36,7 @@ class App extends React.Component {
       isGame: false,
       shuffledDeck: [],
       currentCard: 0,
-      showList: false,
+      showGame: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -89,7 +89,7 @@ class App extends React.Component {
         trunfo,
         imgUrl,
       }],
-      showList: true,
+      showGame: true,
     }), () => {
       this.setState({
         name: '',
@@ -112,7 +112,12 @@ class App extends React.Component {
     this.setState((previousState) => ({
       deck: previousState.deck.filter((card) => card.name !== removedCardName),
       hasTrunfo: !previousState.deck.find((card) => card.name === removedCardName).trunfo,
-    }));
+    }), () => {
+      const { deck } = this.state;
+      if (deck.length === 0) {
+        this.setState({ showGame: false });
+      }
+    });
   }
 
   handleFilterChange({ target }) {
@@ -139,7 +144,7 @@ class App extends React.Component {
   render() {
     const { name, description, attr1, attr2, attr3, image, rare, trunfo,
       buttonDisabled, hasTrunfo, deck, typedName, selectedRare, checkedTrunfo,
-      imgUrl, isGame, shuffledDeck, currentCard, showList } = this.state;
+      imgUrl, isGame, shuffledDeck, currentCard, showGame } = this.state;
     const nameFilteredDeck = typedName
       ? deck.filter((card) => card.name.includes(typedName)) : deck;
     const selectFilteredDeck = selectedRare && selectedRare !== 'todas'
@@ -186,46 +191,44 @@ class App extends React.Component {
             />
           </section>
         </section>
-        {showList
+        <section className="saved-cards">
+          <section className="card-filter">
+            <h2>Todas as cartas</h2>
+            <p>Filtros de busca</p>
+            <Filter
+              typedName={ typedName }
+              onTypedName={ this.handleFilterChange }
+              selectedRare={ selectedRare }
+              onSelectedRare={ this.handleFilterChange }
+              checkedTrunfo={ checkedTrunfo }
+              onCheckedTrunfo={ this.handleFilterChange }
+            />
+          </section>
+          <section className="card-list">
+            <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
+          </section>
+        </section>
+        {showGame
         && (
-          <>
-            <section className="saved-cards">
-              <section className="card-filter">
-                <h2>Todas as cartas</h2>
-                <p>Filtros de busca</p>
-                <Filter
-                  typedName={ typedName }
-                  onTypedName={ this.handleFilterChange }
-                  selectedRare={ selectedRare }
-                  onSelectedRare={ this.handleFilterChange }
-                  checkedTrunfo={ checkedTrunfo }
-                  onCheckedTrunfo={ this.handleFilterChange }
-                />
-              </section>
-              <section className="card-list">
-                <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
-              </section>
-            </section>
-            <section className={ `game ${isGame && 'on-game'}` }>
-              {
-                !isGame
+          <section className={ `game ${isGame && 'on-game'}` }>
+            {
+              !isGame
           && <button type="button" onClick={ this.handleStartClick }>Jogar</button>
-              }
-              <section className={ `gameplay ${lastCard && 'game-over'}` }>
-                {
-                  isGame
+            }
+            <section className={ `gameplay ${lastCard && 'game-over'}` }>
+              {
+                isGame
               && <CurrentCard currentCard={ shuffledDeck[currentCard] } />
-                }
-                {
-                  isGame
+              }
+              {
+                isGame
               && <RemainingCards
                 lastCard={ lastCard }
                 onNextClick={ lastCard ? this.handleStartClick : this.handleNextClick }
               />
-                }
-              </section>
+              }
             </section>
-          </>
+          </section>
         )}
       </>
     );
