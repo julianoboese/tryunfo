@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Attr from './Attr';
 
 function Card(props) {
   const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
     cardImage, cardRare, cardTrunfo } = props;
 
   return (
-    <div className="outer-bound">
+    <div
+      className={ `outer-bound ${cardRare === 'raro' && 'silver'}
+    ${cardRare === 'muito raro' && 'gold'}` }
+    >
       <div className="middle-bound">
         <div className="inner-bound">
           <h3 data-testid="name-card">{cardName}</h3>
@@ -16,23 +20,15 @@ function Card(props) {
               alt={ cardName }
               data-testid="image-card"
             />
-
           </div>
           <p data-testid="description-card">{cardDescription}</p>
-          <div className="attr">
-            <h4>HP....................................</h4>
-            <span data-testid="attr1-card">{cardAttr1}</span>
+          <div className="details">
+            <Attr attrName="HP.." attrId="attr1" attrValue={ cardAttr1 } />
+            <Attr attrName="ATK" attrId="attr2" attrValue={ cardAttr2 } />
+            <Attr attrName="DEF" attrId="attr3" attrValue={ cardAttr3 } />
+            <h5 data-testid="rare-card">{cardRare}</h5>
+            {cardTrunfo && <h4 data-testid="trunfo-card">Super Trunfo</h4>}
           </div>
-          <div className="attr">
-            <h4>ATK..................................</h4>
-            <span data-testid="attr2-card">{cardAttr2}</span>
-          </div>
-          <div className="attr">
-            <h4>DEF..................................</h4>
-            <span data-testid="attr3-card">{cardAttr3}</span>
-          </div>
-          <h5 data-testid="rare-card">{cardRare}</h5>
-          {cardTrunfo && <h4 data-testid="trunfo-card">Super Trunfo</h4>}
         </div>
       </div>
     </div>

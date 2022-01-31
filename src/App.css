@@ -30,7 +30,7 @@ header {
 }
 
 .card-preview {
-  background-color: #023031;
+  background-color: #3761a8;
   color: white;
   padding-bottom: 50px;
 }
@@ -138,7 +138,7 @@ form {
 }
 
 form button {
-  background-color: #003be5;
+  background-color: #3761a8;
   border-radius: 2px;
   border-width: 0;
   color: white;
@@ -146,8 +146,12 @@ form button {
   padding: 10px 32px;
 }
 
-form button:hover {
-  background-color: #0039e59a;
+form button:disabled {
+  background-color: lightgray;
+}
+
+form button:hover:not( [ disabled ] ) {
+  background-color: #3760a8c2;
   cursor: pointer;
 }
 
@@ -162,8 +166,8 @@ form button:hover {
 }
 
 .middle-bound {
-  background-color: #036b52;
-  border: 15px solid #036b52;
+  background-color: #ef5350;
+  border: 15px solid #ef5350;
   border-radius: 10px;
   height: 100%;
 }
@@ -172,10 +176,11 @@ form button:hover {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .inner-bound h3 {
-  background-color: #023031;
+  background-color: #ef5350;
   border-radius: 10px 10px 0 0;
   color: white;
   font-size: 28px;
@@ -188,7 +193,7 @@ form button:hover {
 }
 
 .img-bound {
-  background-color: #023031;
+  background-color: #ef5350;
   height: 260px;
   line-height: 0;
   text-align: center;
@@ -207,6 +212,14 @@ form button:hover {
   height: 30px;
   margin: 10px 0;
   text-align: justify;
+}
+
+.details {
+  background-color: #feca1b;
+  border-radius: 0 0 10px 10px;
+  flex: 1;
+  padding: 6px 6px 0;
+  width: 260px;
 }
 
 .attr {
@@ -236,4 +249,48 @@ form button:hover {
   padding: 5px 10px 3px;
   text-align: center;
   width: 50px;
+}
+
+.details h5 {
+  display: none;
+}
+
+.details > h4 {
+  color: black;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.silver .middle-bound {
+  background-color: silver;
+  border: 15px solid silver;
+}
+
+.silver .inner-bound h3 {
+  background-color: silver;
+}
+
+.silver .img-bound {
+  background-color: silver;
+}
+
+.silver .details {
+  background-color: silver;
+}
+
+.gold .middle-bound {
+  background-color: gold;
+  border: 15px solid gold;
+}
+
+.gold .inner-bound h3 {
+  background-color: gold;
+}
+
+.gold .img-bound {
+  background-color: gold;
+}
+
+.gold .details {
+  background-color: gold;
 }
