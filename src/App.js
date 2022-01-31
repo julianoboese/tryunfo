@@ -111,7 +111,9 @@ class App extends React.Component {
     const removedCardName = target.id.slice(firstChar);
     this.setState((previousState) => ({
       deck: previousState.deck.filter((card) => card.name !== removedCardName),
-      hasTrunfo: !previousState.deck.find((card) => card.name === removedCardName).trunfo,
+      hasTrunfo: previousState.hasTrunfo
+        ? !previousState.deck.find((card) => card.name === removedCardName).trunfo
+        : false,
     }), () => {
       const { deck } = this.state;
       if (deck.length === 0) {
