@@ -6,12 +6,12 @@ import Filter from './components/Filter';
 import CurrentCard from './components/CurrentCard';
 import RemainingCards from './components/RemainingCards';
 import './App.css';
-import './style/AddCardSection.css';
-import './style/Form.css';
-import './style/Card.css';
-import './style/DeckSection.css';
-import './style/Filter.css';
-import './style/Game.css';
+import './components/style/AddCardSection.css';
+import './components/style/Form.css';
+import './components/style/Card.css';
+import './components/style/DeckSection.css';
+import './components/style/Filter.css';
+import './components/style/Game.css';
 import logo from './logo-poketrunfo.png';
 
 class App extends React.Component {
@@ -52,12 +52,14 @@ class App extends React.Component {
       [target.name]: target.type === 'checkbox' ? target.checked : target.value,
     }), () => {
       const { name, description, attr1, attr2, attr3, image, rare } = this.state;
-      fetch(`https://pokeapi.co/api/v2/pokemon/${image.toLowerCase()}`)
-        .then((response) => response.json())
-        .then((data) => this.setState({
-          imgUrl: data.sprites.other['official-artwork'].front_default,
-        }))
-        .catch(() => this.setState((previousState) => previousState));
+      if (target.name === 'image') {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${image.toLowerCase()}`)
+          .then((response) => response.json())
+          .then((data) => this.setState({
+            imgUrl: data.sprites.other['official-artwork'].front_default,
+          }))
+          .catch(() => this.setState((previousState) => previousState));
+      }
       const maxTotal = 210;
       const maxEach = 90;
       const firstCondition = name && description && image && rare;
@@ -149,11 +151,14 @@ class App extends React.Component {
       buttonDisabled, hasTrunfo, deck, typedName, selectedRare, checkedTrunfo,
       imgUrl, isGame, shuffledDeck, currentCard, showGame } = this.state;
     const nameFilteredDeck = typedName
-      ? deck.filter((card) => card.name.includes(typedName)) : deck;
+      ? deck.filter((card) => card.name.toLowerCase().includes(typedName.toLowerCase()))
+      : deck;
     const selectFilteredDeck = selectedRare && selectedRare !== 'todas'
-      ? nameFilteredDeck.filter((card) => card.rare === selectedRare) : nameFilteredDeck;
+      ? nameFilteredDeck.filter((card) => card.rare === selectedRare)
+      : nameFilteredDeck;
     const filteredDeck = checkedTrunfo
-      ? deck.filter((card) => card.trunfo) : selectFilteredDeck;
+      ? deck.filter((card) => card.trunfo)
+      : selectFilteredDeck;
 
     const lastCard = currentCard === shuffledDeck.length - 1;
 

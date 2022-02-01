@@ -17,7 +17,7 @@ function Attr(props) {
 Attr.propTypes = {
   attrName: PropTypes.string.isRequired,
   attrId: PropTypes.string.isRequired,
-  attrValue: PropTypes.number.isRequired,
+  attrValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default Attr;

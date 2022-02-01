@@ -14,13 +14,13 @@ function Filter(props) {
         name="typedName"
         value={ typedName }
         isFilter
-        onFilterChange={ onTypedName }
+        onInputChange={ onTypedName }
       />
       <Select
         name="selectedRare"
         value={ selectedRare }
         isFilter
-        onFilterChange={ onSelectedRare }
+        onInputChange={ onSelectedRare }
       />
       <InputCheck
         labelText="Super Trybe Trunfo"
@@ -28,7 +28,7 @@ function Filter(props) {
         name="checkedTrunfo"
         value={ checkedTrunfo }
         isFilter
-        onFilterChange={ onCheckedTrunfo }
+        onInputChange={ onCheckedTrunfo }
       />
     </div>
   );
@@ -39,7 +39,7 @@ Filter.propTypes = {
   onTypedName: PropTypes.func.isRequired,
   selectedRare: PropTypes.string.isRequired,
   onSelectedRare: PropTypes.func.isRequired,
-  checkedTrunfo: PropTypes.string.isRequired,
+  checkedTrunfo: PropTypes.bool.isRequired,
   onCheckedTrunfo: PropTypes.func.isRequired,
 };
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Input(props) {
+function InputCheck(props) {
   const { labelText, type, name, value, isFilter,
-    hasTrunfo, onInputChange, onFilterChange } = props;
+    hasTrunfo, onInputChange } = props;
   return (
     <div className={ `form-check ${name}` }>
       {
@@ -16,7 +16,7 @@ function Input(props) {
                 id={ name }
                 name={ name }
                 checked={ value }
-                onChange={ isFilter ? onFilterChange : onInputChange }
+                onChange={ onInputChange }
                 data-testid={ isFilter ? 'trunfo-filter' : `${name}-input` }
               />
               <label htmlFor={ name }>{labelText}</label>
@@ -27,15 +27,19 @@ function Input(props) {
   );
 }
 
-Input.propTypes = {
+InputCheck.defaultProps = {
+  hasTrunfo: false,
+  isFilter: false,
+};
+
+InputCheck.propTypes = {
   labelText: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.bool.isRequired,
-  isFilter: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  isFilter: PropTypes.bool,
+  hasTrunfo: PropTypes.bool,
   onInputChange: PropTypes.func.isRequired,
-  onFilterChange: PropTypes.func.isRequired,
 };
 
-export default Input;
+export default InputCheck;
