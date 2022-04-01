@@ -5,30 +5,32 @@ import Select from './Select';
 import InputCheck from './InputCheck';
 
 function Filter(props) {
-  const { typedName, onTypedName, selectedRare, onSelectedRare,
-    checkedTrunfo, onCheckedTrunfo } = props;
+  const {
+    typedName, onTypedName, selectedRare, onSelectedRare,
+    checkedTrunfo, onCheckedTrunfo,
+  } = props;
   return (
     <div className="filter-container">
       <Input
         type="text"
         name="typedName"
-        value={ typedName }
+        value={typedName}
         isFilter
-        onInputChange={ onTypedName }
+        onInputChange={onTypedName}
       />
       <Select
         name="selectedRare"
-        value={ selectedRare }
+        value={selectedRare}
         isFilter
-        onInputChange={ onSelectedRare }
+        onInputChange={onSelectedRare}
       />
       <InputCheck
         labelText="Super Trybe Trunfo"
         type="checkbox"
         name="checkedTrunfo"
-        value={ checkedTrunfo }
+        value={checkedTrunfo}
         isFilter
-        onInputChange={ onCheckedTrunfo }
+        onInputChange={onCheckedTrunfo}
       />
     </div>
   );

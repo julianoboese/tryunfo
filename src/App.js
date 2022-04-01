@@ -51,7 +51,9 @@ class App extends React.Component {
     this.setState(() => ({
       [target.name]: target.type === 'checkbox' ? target.checked : target.value,
     }), () => {
-      const { name, description, attr1, attr2, attr3, image, rare } = this.state;
+      const {
+        name, description, attr1, attr2, attr3, image, rare,
+      } = this.state;
       if (target.name === 'image') {
         fetch(`https://pokeapi.co/api/v2/pokemon/${image.toLowerCase()}`)
           .then((response) => response.json())
@@ -77,8 +79,10 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { name, description, attr1, attr2, attr3,
-      image, rare, trunfo, hasTrunfo, imgUrl } = this.state;
+    const {
+      name, description, attr1, attr2, attr3,
+      image, rare, trunfo, hasTrunfo, imgUrl,
+    } = this.state;
     this.setState((previousState) => ({
       deck: [...previousState.deck, {
         name,
@@ -147,9 +151,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { name, description, attr1, attr2, attr3, image, rare, trunfo,
+    const {
+      name, description, attr1, attr2, attr3, image, rare, trunfo,
       buttonDisabled, hasTrunfo, deck, typedName, selectedRare, checkedTrunfo,
-      imgUrl, isGame, shuffledDeck, currentCard, showGame } = this.state;
+      imgUrl, isGame, shuffledDeck, currentCard, showGame,
+    } = this.state;
     const nameFilteredDeck = typedName
       ? deck.filter((card) => card.name.toLowerCase().includes(typedName.toLowerCase()))
       : deck;
@@ -165,37 +171,37 @@ class App extends React.Component {
     return (
       <>
         <header>
-          <img src={ logo } alt="Logo do Poketrunfo" />
+          <img src={logo} alt="Logo do Poketrunfo" />
         </header>
         <section className="new-card">
           <section className="card-add">
             <h2>Adicionar nova carta</h2>
             <Form
-              cardName={ name }
-              cardDescription={ description }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ image }
-              cardRare={ rare }
-              cardTrunfo={ trunfo }
-              hasTrunfo={ hasTrunfo }
-              onInputChange={ this.handleChange }
-              isSaveButtonDisabled={ buttonDisabled }
-              onSaveButtonClick={ this.handleSubmit }
+              cardName={name}
+              cardDescription={description}
+              cardAttr1={attr1}
+              cardAttr2={attr2}
+              cardAttr3={attr3}
+              cardImage={image}
+              cardRare={rare}
+              cardTrunfo={trunfo}
+              hasTrunfo={hasTrunfo}
+              onInputChange={this.handleChange}
+              isSaveButtonDisabled={buttonDisabled}
+              onSaveButtonClick={this.handleSubmit}
             />
           </section>
           <section className="card-preview">
             <h2>Pré-visualização</h2>
             <Card
-              cardName={ name }
-              cardDescription={ description }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ imgUrl }
-              cardRare={ rare }
-              cardTrunfo={ trunfo }
+              cardName={name}
+              cardDescription={description}
+              cardAttr1={attr1}
+              cardAttr2={attr2}
+              cardAttr3={attr3}
+              cardImage={imgUrl}
+              cardRare={rare}
+              cardTrunfo={trunfo}
             />
           </section>
         </section>
@@ -204,36 +210,38 @@ class App extends React.Component {
             <h2>Todas as cartas</h2>
             <p>Filtros de busca</p>
             <Filter
-              typedName={ typedName }
-              onTypedName={ this.handleFilterChange }
-              selectedRare={ selectedRare }
-              onSelectedRare={ this.handleFilterChange }
-              checkedTrunfo={ checkedTrunfo }
-              onCheckedTrunfo={ this.handleFilterChange }
+              typedName={typedName}
+              onTypedName={this.handleFilterChange}
+              selectedRare={selectedRare}
+              onSelectedRare={this.handleFilterChange}
+              checkedTrunfo={checkedTrunfo}
+              onCheckedTrunfo={this.handleFilterChange}
             />
           </section>
           <section className="card-list">
-            <CardList cardDeck={ filteredDeck } onCardDelete={ this.handleDelete } />
+            <CardList cardDeck={filteredDeck} onCardDelete={this.handleDelete} />
           </section>
         </section>
         {showGame
         && (
-          <section className={ `game ${isGame && 'on-game'}` }>
+          <section className={`game ${isGame && 'on-game'}`}>
             {
               !isGame
-          && <button type="button" onClick={ this.handleStartClick }>Jogar</button>
+          && <button type="button" onClick={this.handleStartClick}>Jogar</button>
             }
-            <section className={ `gameplay ${lastCard && 'game-over'}` }>
+            <section className={`gameplay ${lastCard && 'game-over'}`}>
               {
                 isGame
-              && <CurrentCard currentCard={ shuffledDeck[currentCard] } />
+              && <CurrentCard currentCard={shuffledDeck[currentCard]} />
               }
               {
                 isGame
-              && <RemainingCards
-                lastCard={ lastCard }
-                onNextClick={ lastCard ? this.handleStartClick : this.handleNextClick }
+              && (
+              <RemainingCards
+                lastCard={lastCard}
+                onNextClick={lastCard ? this.handleStartClick : this.handleNextClick}
               />
+              )
               }
             </section>
           </section>

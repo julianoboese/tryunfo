@@ -2,8 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 
-describe("1 - Crie o formulário que será usado para adicionar cartas ao baralho", () => {
-
+describe('1 - Crie o formulário que será usado para adicionar cartas ao baralho', () => {
   it("Será validado se existe um input texto que possui o `data-testid='name-input'`", () => {
     render(<App />);
     const nameInput = screen.getByTestId(/name-input/i);
@@ -44,18 +43,18 @@ describe("1 - Crie o formulário que será usado para adicionar cartas ao baralh
     render(<App />);
     const rareInput = screen.getByTestId(/rare-input/i);
     expect(rareInput).toBeInTheDocument();
-    expect(rareInput.options[0].value).toBe("normal");
-    expect(rareInput.options[1].value).toBe("raro");
-    expect(rareInput.options[2].value).toBe("muito raro");
+    expect(rareInput.options[0].value).toBe('normal');
+    expect(rareInput.options[1].value).toBe('raro');
+    expect(rareInput.options[2].value).toBe('muito raro');
   });
-  
+
   it("Será validado se existe um input checkbox que possui o `data-testid='trunfo-input'`", () => {
     render(<App />);
     const trunfoCheck = screen.getByTestId(/trunfo-input/i);
     expect(trunfoCheck).toBeInTheDocument();
   });
 
-  it("Deve renderizar o botão Salvar", () => {
+  it('Deve renderizar o botão Salvar', () => {
     render(<App />);
     const saveBtn = screen.getByTestId(/save-button/i);
     expect(saveBtn).toBeInTheDocument();

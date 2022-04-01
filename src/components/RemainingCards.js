@@ -8,15 +8,15 @@ function RemainingCards(props) {
     <div>
       {
         lastCard
-          ? <button type="button" onClick={ onNextClick }>Embaralhar cartas</button>
+          ? <button type="button" onClick={onNextClick}>Embaralhar cartas</button>
           : (
             <>
               <div className="outer-remaining">
                 <div className="inner-remaining">
-                  <img src={ logo } alt="Logo do Poketrunfo" />
+                  <img src={logo} alt="Logo do PokeTrunfo" />
                 </div>
               </div>
-              <button type="button" onClick={ onNextClick }>Próxima carta</button>
+              <button type="button" onClick={onNextClick}>Próxima carta</button>
             </>
           )
       }

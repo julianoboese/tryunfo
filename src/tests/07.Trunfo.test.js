@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 
-describe("7 - Crie a validação do Super Trunfo", () => {
-  it("Será validado se o checkbox do Super Trunfo é redenderizado ao carregar a página", () => {
+describe('7 - Crie a validação do Super Trunfo', () => {
+  it('Será validado se o checkbox do Super Trunfo é renderizado ao carregar a página', () => {
     render(<App />);
     const checkboxTrunfo = screen.getByTestId(/trunfo-input/i);
     expect(checkboxTrunfo).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe("7 - Crie a validação do Super Trunfo", () => {
     const attr2Input = screen.getByTestId(/attr2-input/i);
     const attr3Input = screen.getByTestId(/attr3-input/i);
     const selectInput = screen.getByTestId(/rare-input/i);
-    const saveBtn = screen.getByTestId("save-button");
+    const saveBtn = screen.getByTestId('save-button');
 
     userEvent.type(nameInput, 'Carta 1 - Escavadeira Dupla');
     userEvent.type(descInput, 'Uma simples escavadeira');
@@ -28,7 +28,7 @@ describe("7 - Crie a validação do Super Trunfo", () => {
     userEvent.type(attr1Input, '90');
     userEvent.type(attr2Input, '90');
     userEvent.type(attr3Input, '30');
-    userEvent.selectOptions(selectInput, "raro");
+    userEvent.selectOptions(selectInput, 'raro');
     userEvent.click(checkboxTrunfo);
     userEvent.click(saveBtn);
 

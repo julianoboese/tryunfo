@@ -9,7 +9,7 @@ function Attr(props) {
         {attrName}
         ...............................
       </h4>
-      <span data-testid={ `${attrId}-card` }>{attrValue}</span>
+      <span data-testid={`${attrId}-card`}>{attrValue}</span>
     </div>
   );
 }
