@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/julianoboese.github.io/tryunfo/static/css/main.340551fc.css",
+    "main.js": "/julianoboese.github.io/tryunfo/static/js/main.c5bf528b.js",
+    "static/media/logo-poketrunfo.png": "/julianoboese.github.io/tryunfo/static/media/logo-poketrunfo.f117cfc8b0d18297bbf4.png",
+    "index.html": "/julianoboese.github.io/tryunfo/index.html",
+    "main.340551fc.css.map": "/julianoboese.github.io/tryunfo/static/css/main.340551fc.css.map",
+    "main.c5bf528b.js.map": "/julianoboese.github.io/tryunfo/static/js/main.c5bf528b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.340551fc.css",
+    "static/js/main.c5bf528b.js"
+  ]
+}
